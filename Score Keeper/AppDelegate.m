@@ -22,7 +22,7 @@
     
 //  Make the navigationController the rootViewController of the window.
     
-
+    self.window.backgroundColor = [UIColor whiteColor];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
