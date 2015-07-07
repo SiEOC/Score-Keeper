@@ -42,21 +42,47 @@
     
 /*  Note:  Getters & Setters Are Active From Property */
     
-    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(50, 10, 100, 50)];
-    UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(100, 10, 100, 45)];
-    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 120, 55)];
-    
-    scoreLabel.textColor = [UIColor greenColor];
-    scoreLabel.text = @"hi";
-    
-    [self.view addSubview:scoreLabel];
+    UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 150, 240, 50)];  // on left side
+    UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(0, 65, 100, 50)]; // in middle
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(240, 50, 80, 50)];  // is on right
     
     
+    // TextField
+    nameTextField.backgroundColor = [UIColor redColor];
+    nameTextField.textColor = [UIColor whiteColor];
+    nameTextField.text = @"Text Field";
     
-   // Decrement Properties
+    
+    // Stepper
+    decrementOrIncrementStepper.backgroundColor = [UIColor redColor];
+    decrementOrIncrementStepper.tintColor = [UIColor whiteColor];
+    
+    // Stepepr Decrement & Increment Properties
     
     decrementOrIncrementStepper.wraps = YES;
     decrementOrIncrementStepper.autorepeat = YES;
+    
+    // Label
+    scoreLabel.backgroundColor = [UIColor redColor];
+    scoreLabel.textColor = [UIColor whiteColor];
+    scoreLabel.text = @"Label";
+    
+    // Text Field Needs Delegate
+    [nameTextField resignFirstResponder];
+    
+    
+    
+    
+    
+    // My SubViews
+    
+    [self.view addSubview:nameTextField];
+    [self.view addSubview:decrementOrIncrementStepper];
+    [self.view addSubview:scoreLabel];
+    
+    self.view.backgroundColor = [UIColor purpleColor];
+    
+  
 
 //    
 //
