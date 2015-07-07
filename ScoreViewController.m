@@ -39,14 +39,10 @@
     self.title = @"Score-Keeper";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
     
-    [self.view addSubview:_scrollView];
-    [self.view addSubview:_nameTextField];
-    [self.view addSubview:_scoreLabel];
-    [self.view addSubview:_decrementOrIncrementButton];
     
 /*  Note:  Getters & Setters Are Active From Property */
     
-    self.nameTextField.frame = CGRectMake(10, 10, 120, 55);
+    self.nameTextField.frame = CGRectMake(70, 10, 120, 55);
     self.scoreLabel.frame = CGRectMake(140, 10, 50, 50);
     self.decrementOrIncrementButton.frame = CGRectMake(200.00, 180, 50, 50);
     
@@ -65,7 +61,8 @@
  
     [self.decrementOrIncrementButton setCenter:CGPointMake(128, 128)];
     
-    self.decrementOrIncrementButton.wraps = YES; self.decrementOrIncrementButton.autorepeat = YES;
+    self.decrementOrIncrementButton.wraps = YES;
+    self.decrementOrIncrementButton.autorepeat = YES;
     
     self.value = self.decrementOrIncrementButton.value;
     
@@ -78,7 +75,10 @@
 
     self.view.backgroundColor = [UIColor purpleColor];
     
-    
+    [self.view addSubview:self.scrollView];
+    [self.view addSubview:self.nameTextField];
+    [self.view addSubview:self.scoreLabel];
+    [self.view addSubview:self.decrementOrIncrementButton];
     
 }
 
