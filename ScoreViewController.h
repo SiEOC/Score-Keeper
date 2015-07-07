@@ -12,10 +12,6 @@
 @interface ScoreViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic,strong)UIScrollView *scrollView;
-//@property (nonatomic,strong)UITextField *nameTextField;
-//@property (nonatomic,strong)UILabel *scoreLabel;
-//@property (nonatomic,strong)UIStepper *decrementOrIncrementButton;
-//@property (nonatomic,assign)NSUInteger value; // Score Value
 
 -(UIView *)addScrolView:(UIView *)view;
 

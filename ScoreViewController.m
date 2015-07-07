@@ -10,7 +10,7 @@
 
 @interface ScoreViewController ()
 
-
+@property (nonatomic, assign) NSInteger totalPoints;
 
 @end
 
@@ -46,11 +46,13 @@
     UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(0, 65, 100, 50)]; // in middle
     UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(240, 50, 80, 50)];  // is on right
     
-    
+
     // TextField
     nameTextField.backgroundColor = [UIColor redColor];
     nameTextField.textColor = [UIColor whiteColor];
     nameTextField.text = @"Text Field";
+    
+    
     
     
     // Stepper
@@ -61,13 +63,19 @@
     
     decrementOrIncrementStepper.wraps = YES;
     decrementOrIncrementStepper.autorepeat = YES;
+    decrementOrIncrementStepper.maximumValue = 20;
+    
     
     // Label
     scoreLabel.backgroundColor = [UIColor redColor];
     scoreLabel.textColor = [UIColor whiteColor];
-    scoreLabel.text = @"Label";
     
+    float totalPoints = [scoreLabel.text floatValue];
+    
+//    scoreLabel.text =  [[NSString stringWithFormat:@"%2hu", (unsigned short)totalPoints]];
+
     // Text Field Needs Delegate
+    
     [nameTextField resignFirstResponder];
     
     
@@ -85,12 +93,10 @@
   
 
 //    
+////
 //
-//    self.value = self.decrementOrIncrementButton.value;
-//    
-//    self.scoreLabel.text = [NSString stringWithFormat:@"%2lu", (unsigned long)self.value];
 //
-//    self.decrementOrIncrementButton.maximumValue = 19;
+//
 //    
 //    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
 //   
