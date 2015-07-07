@@ -6,26 +6,37 @@
 //  Copyright (c) 2014 DevMountain. All rights reserved.
 //
 
-#import "SKAppDelegate.h"
+#import "AppDelegate.h"
 #import "ScoreViewController.h"
 
-@implementation SKAppDelegate
+
+
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+ //  Create a UIViewController called ScoreViewController    xx
+    
+//  In the AppDelegate didFinishLaunching method initialize a UINavigationController with a scoreViewController instance as the rootViewController
+    
+//  Make the navigationController the rootViewController of the window.
+    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    // Instance of scoreViewController
-    ScoreViewController *scoreVC = [[ScoreViewController alloc]init];
+// Create an instance of  ScoreViewController
     
-    // RootView for Navigation Controller & ScoreVC Instance
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:scoreVC];
+    ScoreViewController *scoreViewController = [ScoreViewController new];
     
-    //window with a new rootView
-    [self.window setRootViewController:navController];
-
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:scoreViewController];
+    
+    
+// Add Window as "rootView" controller
+    
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
     
     return YES;

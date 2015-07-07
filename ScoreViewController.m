@@ -14,18 +14,41 @@
 
 @end
 
+/* 
+ 	    Create an addScoreView method that will add a UIView to the scrollView xx
+	•	In the method Initialize a UIView called view xx
+ 
+Initialize a UITextField for name, a UILabel for score, and a UIStepper for a button
+	•	Lay them out by setting their frames in the new view
+ Add that view to the scrollview
+	•	You'll want to adjust the properties of each of those controls:
+	◦	Placeholder text for the textfields
+	◦	Min and max values for the stepper
+ */
+
 @implementation ScoreViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-//    [self.view addSubview:_scrollView];
-    
-  ScoreViewController *scoreVC2  = [[ScoreViewController alloc] init];
-    
-    [self.navigationController pushViewController:scoreVC2 animated:YES];
-    
+    [self.view addSubview:_scrollView];
+     
     self.title = @"Score-Keeper";
+    
+    // To change color of title in a navigation bar.
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
+    
+    
+    self.view.backgroundColor = [UIColor purpleColor];
+    
+}
+
+-(UIView *)addScrolView:(UIView *)view
+{
+    UIView *newView = view;
+    
+    return newView;
 }
 
 - (void)didReceiveMemoryWarning {

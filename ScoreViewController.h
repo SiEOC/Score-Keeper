@@ -10,5 +10,9 @@
 
 
 @interface ScoreViewController : UIViewController
+
 @property UIScrollView *scrollView;
+
+-(UIView *)addScrolView:(UIView *)view;
+
 @end
