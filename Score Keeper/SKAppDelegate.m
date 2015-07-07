@@ -15,20 +15,19 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    self.window.backgroundColor = [UIColor whiteColor];
+    
     // Instance of scoreViewController
     ScoreViewController *scoreVC = [[ScoreViewController alloc]init];
     
-    // Rootview for Navigation Controller & ScoreVC Instance
-    
+    // RootView for Navigation Controller & ScoreVC Instance
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:scoreVC];
     
     //window with a new rootView
     [self.window setRootViewController:navController];
-    
-    
 
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

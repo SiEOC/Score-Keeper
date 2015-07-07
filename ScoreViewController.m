@@ -10,6 +10,8 @@
 
 @interface ScoreViewController ()
 
+
+
 @end
 
 @implementation ScoreViewController
@@ -17,13 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:_scrollView];
+//    [self.view addSubview:_scrollView];
     
   ScoreViewController *scoreVC2  = [[ScoreViewController alloc] init];
-                                    
-    scoreVC2.title = @"Score-Keeper";
     
     [self.navigationController pushViewController:scoreVC2 animated:YES];
+    
+    self.title = @"Score-Keeper";
 }
 
 - (void)didReceiveMemoryWarning {
