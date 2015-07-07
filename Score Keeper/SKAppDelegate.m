@@ -22,8 +22,11 @@
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:scoreVC];
     
+    //window with a new rootView
+    [self.window setRootViewController:navController];
     
     
+
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

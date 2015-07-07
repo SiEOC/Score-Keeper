@@ -16,7 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.view addSubview:_scrollView];
+    
+  ScoreViewController *scoreVC2  = [[ScoreViewController alloc] init];
+                                    
+    scoreVC2.title = @"Score-Keeper";
+    
+    [self.navigationController pushViewController:scoreVC2 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

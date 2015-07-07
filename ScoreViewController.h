@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScoreViewController : UIViewController
 
+@interface ScoreViewController : UIViewController
+@property UIScrollView *scrollView;
 @end
