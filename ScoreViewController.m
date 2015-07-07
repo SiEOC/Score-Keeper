@@ -74,8 +74,9 @@
     
 //    scoreLabel.text =  [[NSString stringWithFormat:@"%2hu", (unsigned short)totalPoints]];
 
-    // Text Field Needs Delegate
     
+    
+    // Text Field Needs Delegate
     [nameTextField resignFirstResponder];
     
     
