@@ -32,7 +32,7 @@ static CGFloat competitorsLane = 95;
     
     
     
-    self.title = @"Game Name"; 
+    self.title = @"Game Name";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.view.backgroundColor = [UIColor redColor];
     
@@ -48,7 +48,7 @@ static CGFloat competitorsLane = 95;
     
     for (NSInteger i = 0; i < 4; i++)
     
-        [self addScoreView:i];
+    [self addScoreView:i];
     
     
     
