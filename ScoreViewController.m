@@ -8,8 +8,8 @@
 
 #import "ScoreViewController.h"
 
-static CGFloat margin = 20;
-static CGFloat scoreViewHeight = 90;
+
+static CGFloat competitorsLane = 95;
 
 @interface ScoreViewController () <UITextFieldDelegate>
 
@@ -24,31 +24,34 @@ static CGFloat scoreViewHeight = 90;
 {
     [super viewDidLoad];
     
-//    if () // change condition...,new laert at END and start..
-//    {
-//        UIAlertView *alertNewgame = [[UIAlertView alloc]initWithTitle:@"New Game" message:@"Lets Do Another Game!" delegate:nil cancelButtonTitle:@"Of Course" otherButtonTitles:nil];
-//    }
+    if (self) //Change Later
+    {
+        UIAlertView *alertNewgame = [[UIAlertView alloc]initWithTitle:@"New Game" message:@"Lets Start A Game!" delegate:nil cancelButtonTitle:@"Start" otherButtonTitles:nil];
+        [alertNewgame show];
+    }
     
-    self.title = @"Score-Keeper";
     
+    
+    self.title = @"Game Name"; 
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.view.backgroundColor = [UIColor redColor];
     
     self.scoreLabels = [NSMutableArray new];
     
 
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     
     [self.view addSubview:scrollView];
     
-    self.scrollView = scrollView; // What does this do?
+    self.scrollView = scrollView;
     
-    // Call addScoreView 4 times, passing in index as parameter // Note "i" should equal number put inFirstVC # of players "name of game"
+    
     for (NSInteger i = 0; i < 4; i++)
-    {
-        [self addScoreView:i];  // Call method on self 4 times
-    }
     
-    self.view.backgroundColor = [UIColor redColor];
+        [self addScoreView:i];
+    
+    
+    
 }
 
     
@@ -56,12 +59,13 @@ static CGFloat scoreViewHeight = 90;
     {
         
         
-        UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 53, 100, 50)];  // on left side
-        UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(225, 65, 100, 50)]; // in middle
-        UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 50, 100, 50)];  // is on right
+        UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 51, 172, 50)];  // on left side
+        UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(225, 65, 100, 30)]; // in middle
+        UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 52, 10, 50)];  // is on right
         
         // TextField
         
+       
         nameTextField.backgroundColor = [UIColor redColor];
         nameTextField.textColor = [UIColor whiteColor];
         nameTextField.tag = -20;
@@ -87,10 +91,8 @@ static CGFloat scoreViewHeight = 90;
         
         [self.scoreLabels addObject:scoreLabel]; // Array with my 'dynamic' cells. // Adding a label to each "scorelabels"
         
-        
-        
-        // Line That stretches across the width of the screen // Code From Other Project
-        UIView *lineDivide = [[UIView alloc] initWithFrame:CGRectMake(0, scoreViewHeight - 1, self.view.frame.size.width, 1)];
+    
+        UIView *lineDivide = [[UIView alloc] initWithFrame:CGRectMake(0, competitorsLane, self.view.frame.size.width, 1)];
         lineDivide.backgroundColor = [UIColor lightGrayColor];
         
         // My SubViews
@@ -99,7 +101,7 @@ static CGFloat scoreViewHeight = 90;
         [self.view addSubview:decrementOrIncrementStepper];
         [self.view addSubview:scoreLabel];
         [self.view addSubview:lineDivide];
-        [self.scrollView addSubview:_view]; // Add All Labels to Scroll View
+//        [self.scrollView addSubview:self.view]; // Add All Labels to Scroll View
         
 
         //  Actions & Methods
@@ -125,9 +127,9 @@ static CGFloat scoreViewHeight = 90;
     }
     
     
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (BOOL)textFieldShouldReturn:(UITextField *)nameTextField
     {
-        [textField resignFirstResponder];
+        [nameTextField resignFirstResponder];
         return YES;
     }
     
