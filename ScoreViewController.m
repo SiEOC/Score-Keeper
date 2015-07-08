@@ -8,14 +8,18 @@
 
 #import "ScoreViewController.h"
 
-@interface ScoreViewController ()
+static CGFloat margin = 20;
+static CGFloat scoreViewHeight = 90;
+
+@interface ScoreViewController () <UITextFieldDelegate>
+
 
 @property (nonatomic, assign) NSInteger totalPoints;
+@property (nonatomic, strong) NSMutableArray *scoreLabels; // Created a property for an Array thats mutable.
 
 @end
 
 /* 
- 
  
 
  Add that view to the scrollview
@@ -35,6 +39,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    self.scoreLabels = [NSMutableArray new];
+    
+
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64)];
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+    
+    // Call addScoreView 4 times, passing in index as parameter
+    for (NSInteger i = 0; i < 4; i++)
+    {
+        [self addScoreView:i];
+    }
     
     self.title = @"Score-Keeper";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
@@ -71,8 +89,6 @@
     scoreLabel.textColor = [UIColor whiteColor];
     
     float totalPoints = [scoreLabel.text floatValue];
-    
-//    scoreLabel.text =  [[NSString stringWithFormat:@"%2hu", (unsigned short)totalPoints]];
 
     
     
@@ -91,33 +107,85 @@
     
     self.view.backgroundColor = [UIColor purpleColor];
     
-  
-   
- 
-    
 }
 
--(UIView *)addScrolView:(UIView *)view referencePassed:(NSInteger)indexPaths;
+    
+- (void)addScoreView:(NSInteger)index
+    {
+        
+        CGFloat nameFieldWidth = 90;
+        CGFloat scoreFieldWidth = 60;
+        CGFloat stepperButtonWidth = 90;
+        
+        CGFloat width = self.view.frame.size.width;
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, index * scoreViewHeight, width, scoreViewHeight)];
+        
+        UITextField *nameField = [[UITextField alloc] initWithFrame:CGRectMake(margin, margin, nameFieldWidth, 44)];
+        nameField.tag = -1000;
+        // Set UITextfield delegate to the viewController in order to call textFieldShouldReturn
+        nameField.delegate = self;
+        nameField.placeholder = @"Name";
+        [view addSubview:nameField];
+        
+        // We need to store the index we're adding as the tag of the text field so that we can find the corresponding button when the text changes
+        UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(margin + nameFieldWidth, margin, scoreFieldWidth, 44)];
+        scoreLabel.text = @"0";
+        scoreLabel.textAlignment = NSTextAlignmentCenter;
+        [self.scoreLabels addObject:scoreLabel];
+        [view addSubview:scoreLabel];
+        
+        // We need to store the index we're adding as the tag of the button so we can find the corresponding text when the user taps the button
+        UIStepper *scoreStepper = [[UIStepper alloc] initWithFrame:CGRectMake(60 + nameFieldWidth + scoreFieldWidth, 30, stepperButtonWidth, 44)];
+        scoreStepper.maximumValue = 1000;
+        scoreStepper.minimumValue = -1000;
+        scoreStepper.tag = index;
+        
+        // Add scoreStepperChanged method as the action when scoreStepper's value changes
+        [scoreStepper addTarget:self action:@selector(scoreStepperChanged:) forControlEvents:UIControlEventValueChanged];
+        [view addSubview:scoreStepper];
+        
+        // Initialize separator UIView at the bottom of view that stretches across the width of the screen
+        UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, scoreViewHeight - 1, self.view.frame.size.width, 1)];
+        separator.backgroundColor = [UIColor lightGrayColor];
+        [view addSubview:separator];
+        
+        // Add the view that contains nameField, scoreLabel, scoreStepper, and separator to scrollView
+        [self.scrollView addSubview:view];
+    }
+    
+- (void)scoreStepperChanged:(id)sender
+    {
+        
+        // Initialize stepper as the value passed in as the method parameter
+        UIStepper *stepper = sender;
+        
+        // Initialize an NSInteger as the stepper tag value
+        NSInteger index = stepper.tag;
+        
+        // Initialize double as stepper value (default is 0)
+        double value = [stepper value];
+        
+        // Initialize UILabel as a scoreLabel from our scoreLabels array property with an index corresponding to the stepper on that line
+        UILabel *scoreLabel = self.scoreLabels[index];
+        
+        // Update the label text with the new stepper value
+        scoreLabel.text = [NSString stringWithFormat:@"%d", (int)value];
+    }
+    
+    
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+    {
+        [textField resignFirstResponder];
+        return YES;
+    }
+    
+
+
+- (void)didReceiveMemoryWarning
 {
-    UIView *newView = view;
-    
-    
-    return newView;
-}
-
-- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

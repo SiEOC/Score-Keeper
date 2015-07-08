@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ScoreViewController : UIViewController <UITextFieldDelegate>
+@interface ScoreViewController : UIViewController 
 
 @property (nonatomic,strong)UIScrollView *scrollView;
 @property (nonatomic,strong)NSMutableArray *allScoreLables;
