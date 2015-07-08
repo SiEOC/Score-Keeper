@@ -92,26 +92,15 @@
     self.view.backgroundColor = [UIColor purpleColor];
     
   
-
-//    
-////
-//
-//
-//
-//    
-//    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
-//   
-//
-//    self.view.backgroundColor = [UIColor purpleColor];
-//    
-//    [self.view addSubview:self.scrollView];
-//   
+   
+ 
     
 }
 
--(UIView *)addScrolView:(UIView *)view
+-(UIView *)addScrolView:(UIView *)view referencePassed:(NSInteger)indexPaths;
 {
     UIView *newView = view;
+    
     
     return newView;
 }

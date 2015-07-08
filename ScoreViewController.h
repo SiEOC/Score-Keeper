@@ -12,8 +12,10 @@
 @interface ScoreViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic,strong)UIScrollView *scrollView;
+@property (nonatomic,strong)NSMutableArray *allScoreLables;
 
--(UIView *)addScrolView:(UIView *)view;
+
+-(UIView *)addScrolView:(UIView *)view referencePassed:(NSInteger)indexPaths;
 
 
 @end
