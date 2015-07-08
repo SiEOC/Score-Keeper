@@ -12,10 +12,9 @@
 @interface ScoreViewController : UIViewController 
 
 @property (nonatomic,strong)UIScrollView *scrollView;
-@property (nonatomic,strong)NSMutableArray *allScoreLables;
 
 
--(UIView *)addScrolView:(UIView *)view referencePassed:(NSInteger)indexPaths;
+- (void)addScoreView:(NSInteger)index;
 
 
 @end
