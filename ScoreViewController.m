@@ -47,10 +47,11 @@ static CGFloat competitorsLane = 95;
     
     
     for (NSInteger i = 0; i < 4; i++)
+    {
     
-    [self addScoreView:i];
+      [self addScoreView:i];
     
-    
+    }
     
 }
 
@@ -61,7 +62,7 @@ static CGFloat competitorsLane = 95;
         
         UITextField *nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 51, 172, 50)];  // on left side
         UIStepper *decrementOrIncrementStepper = [[UIStepper alloc] initWithFrame:CGRectMake(225, 65, 100, 30)]; // in middle
-        UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 52, 10, 50)];  // is on right
+        UILabel *scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(155, 52, 20, 50)];  // is on right
         
         // TextField
         
@@ -101,6 +102,7 @@ static CGFloat competitorsLane = 95;
         [self.view addSubview:decrementOrIncrementStepper];
         [self.view addSubview:scoreLabel];
         [self.view addSubview:lineDivide];
+        
 //        [self.scrollView addSubview:self.view]; // Add All Labels to Scroll View
         
 
@@ -118,6 +120,8 @@ static CGFloat competitorsLane = 95;
         
      
         double value = [stepper value];
+        
+
         
         // Initialize UILabel as a scoreLabel from our scoreLabels array property with an index corresponding to the stepper on that line
         UILabel *scoreLabel = self.scoreLabels[index];
